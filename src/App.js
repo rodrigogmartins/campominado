@@ -11,7 +11,7 @@ import {
   invertFlag,
   flagsUsed,
 } from './functions';
-import MineField from './components/MineField';
+import MineField from './components/MineField/MineField';
 import Header from './components/Header';
 import LevelSelection from './screens/LevelSelection';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import Field from './Field/Field';
+import Field from '../Field/Field';
+import { Row, Container } from './styles';
 
 function MineField({ board, onOpenField, onSelectField }) {
   const rows = board.map((row, r) => {
@@ -15,18 +15,10 @@ function MineField({ board, onOpenField, onSelectField }) {
       );
     });
 
-    return (
-      <View key={r} style={{ flexDirection: 'row' }}>
-        {columns}
-      </View>
-    );
+    return <Row key={r}>{columns}</Row>;
   });
 
-  return <View style={styles.container}>{rows}</View>;
+  return <Container>{rows}</Container>;
 }
-
-const styles = StyleSheet.create({
-  container: { backgroundColor: '#EEE' },
-});
 
 export default MineField;
