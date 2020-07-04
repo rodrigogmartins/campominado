@@ -1,38 +1,40 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
+
+const Container = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+const CoreMine = styled.View`
+  height: 14px;
+  width: 14px;
+  border-radius: 10px;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Line = styled.View`
+  position: absolute;
+  height: 3px;
+  width: 20px;
+  border-radius: 3px;
+  background-color: black;
+
+  ${({ rotate }) => (rotate ? `transform: rotate(${rotate}deg);` : '')}
+`;
 
 function Mine() {
   return (
-    <View style={styles.container}>
-      <View style={styles.coreMine} />
-      <View style={styles.line} />
-      <View style={[styles.line, { transform: [{ rotate: '45deg' }] }]} />
-      <View style={[styles.line, { transform: [{ rotate: '90deg' }] }]} />
-      <View style={[styles.line, { transform: [{ rotate: '135deg' }] }]} />
-    </View>
+    <Container>
+      <CoreMine />
+      <Line />
+      <Line rotate={45} />
+      <Line rotate={90} />
+      <Line rotate={135} />
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  coreMine: {
-    height: 14,
-    width: 14,
-    borderRadius: 10,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  line: {
-    position: 'absolute',
-    height: 3,
-    width: 20,
-    borderRadius: 3,
-    backgroundColor: 'black',
-  },
-});
 
 export default Mine;
