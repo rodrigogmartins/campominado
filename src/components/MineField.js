@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Field from './Field';
+import Field from './Field/Field';
 
 function MineField({ board, onOpenField, onSelectField }) {
   const rows = board.map((row, r) => {
