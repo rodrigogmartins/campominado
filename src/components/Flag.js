@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
-  margin-top: 6px;
+  margin-top: ${({ bigger }) => (bigger ? '3px;' : '6px;')}
   margin-left: 3px;
 `;
 
@@ -80,7 +80,7 @@ const Base2 = styled.View`
 
 function Flag({ bigger }) {
   return (
-    <Container>
+    <Container bigger={bigger}>
       <FlagPole bigger={bigger} />
       <FlagCloth bigger={bigger} />
       <Base1 bigger={bigger} />
