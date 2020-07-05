@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 const Container = styled.View`
-  margin-top: 2px;
+  margin-top: 6px;
+  margin-left: 3px;
 `;
 
 const FlagPole = styled.View`
@@ -27,7 +28,7 @@ const FlagCloth = styled.View`
   height: 5px
   width: 6px;
   background-color: #F22;
-  marginLeft: 3px;
+  margin-left: 3px;
 
   ${({ bigger }) =>
     bigger
