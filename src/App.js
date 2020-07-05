@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, StatusBar, SafeAreaView, Alert } from 'react-native';
-import params from './params';
+import {
+  StyleSheet,
+  View,
+  StatusBar,
+  SafeAreaView,
+  Alert,
+  ToastAndroid,
+} from 'react-native';
 import {
   createMinedBoard,
   cloneBoard,
@@ -11,6 +17,7 @@ import {
   invertFlag,
   flagsUsed,
 } from './functions';
+import params from './params';
 import MineField from './components/MineField/MineField';
 import Header from './components/Header/Header';
 import LevelSelection from './screens/LevelSelection';
@@ -48,11 +55,19 @@ class App extends Component {
 
     if (lost) {
       showMines(board);
-      Alert.alert('Perdeu', 'Animal!!!');
+      ToastAndroid.showWithGravity(
+        'Perdeu!',
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
     }
 
     if (won) {
-      Alert.alert('Boaa', 'Meu guri');
+      ToastAndroid.showWithGravity(
+        'Ganhou!',
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
     }
 
     this.setState({ board, lost, won });
