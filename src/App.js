@@ -12,7 +12,7 @@ import {
   flagsUsed,
 } from './functions';
 import MineField from './components/MineField/MineField';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import LevelSelection from './screens/LevelSelection';
 
 class App extends Component {

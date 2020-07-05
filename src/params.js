@@ -4,7 +4,7 @@ const params = {
   blockSize: 30,
   borderSize: 2,
   fontSize: 15,
-  headerRatio: 0.15,
+  headerRatio: 0.1,
   dificultLevel: 0.2,
   getColumnsAmount() {
     const width = Dimensions.get('window').width;
