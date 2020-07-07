@@ -20,7 +20,7 @@ import {
 import params from './params';
 import MineField from './components/MineField/MineField';
 import Header from './components/Header/Header';
-import LevelSelection from './screens/LevelSelection';
+import LevelSelection from './screens/LevelSelection/LevelSelection';
 
 class App extends Component {
   constructor(props) {
@@ -43,34 +43,38 @@ class App extends Component {
       board: createMinedBoard(rows, cols, this.minesAmount()),
       won: false,
       lost: false,
+      showLevelSelection: false,
     };
   };
 
   onOpenField = (row, column) => {
     const board = cloneBoard(this.state.board);
+    const gameEndded = this.state.won || this.state.lost;
 
-    openField(board, row, column);
-    const lost = hadExplosion(board);
-    const won = wonGame(board);
+    if (!gameEndded) {
+      openField(board, row, column);
+      const lost = hadExplosion(board);
+      const won = wonGame(board);
 
-    if (lost) {
-      showMines(board);
-      ToastAndroid.showWithGravity(
-        'Perdeu!',
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER,
-      );
+      if (lost) {
+        showMines(board);
+        ToastAndroid.showWithGravity(
+          'Perdeu!',
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER,
+        );
+      }
+
+      if (won) {
+        ToastAndroid.showWithGravity(
+          'Ganhou!',
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER,
+        );
+      }
+
+      this.setState({ board, lost, won });
     }
-
-    if (won) {
-      ToastAndroid.showWithGravity(
-        'Ganhou!',
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER,
-      );
-    }
-
-    this.setState({ board, lost, won });
   };
 
   onSelectField = (row, column) => {
